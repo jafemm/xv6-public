@@ -534,8 +534,7 @@ procdump(void)
 }
 
 int
-getprocs(void)
-{
+getprocs(void){
  
   
   int contador;
@@ -545,5 +544,5 @@ getprocs(void)
     if(p->state == EMBRYO || p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING){
       contador = contador+1;
     }
-  }
 }
+
