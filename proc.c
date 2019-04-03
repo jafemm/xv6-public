@@ -532,3 +532,18 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+int
+getprocs(void)
+{
+ 
+  
+  int contador;
+  struct proc *p;
+  
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if(p->state == EMBRYO || p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING){
+      contador = contador+1;
+    }
+  }
+}
