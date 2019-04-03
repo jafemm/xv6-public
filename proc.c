@@ -537,7 +537,7 @@ int
 getprocs(void){
  
   
-  int contador;
+  int contador=0;
   struct proc *p;
   
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
@@ -545,4 +545,5 @@ getprocs(void){
       contador = contador+1;
     }
   }
+  return contador;
 }
