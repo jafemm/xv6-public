@@ -25,6 +25,7 @@ int sleep(int);
 int uptime(void);
 int getprocs(void); //agregado por mi
 
+
 // ulib.c
 int stat(const char*, struct stat*);
 char* strcpy(char*, const char*);
