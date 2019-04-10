@@ -533,17 +533,19 @@ procdump(void)
   }
 }
 
-int
-getprocs(void){
- 
+int getprocs(void){
   
   int contador=0;
   struct proc *p;
-  
-  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){    
     if(p->state == EMBRYO || p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING){
       contador = contador+1;
     }
+    else{
+      continue;   
+    }
   }
+  release(&ptable.lock);
   return contador;
 }
