@@ -539,14 +539,11 @@ int getprocs(void){
   struct proc *p;
   
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){    
-    printf("entre al for");
     if(p->state == EMBRYO || p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING){
-      printf("entre al if");
       contador = contador+1;
       return contador;
     }
     else{
-      printf("entre al else");
       continue;
       return contador;    
     }
