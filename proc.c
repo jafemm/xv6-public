@@ -545,5 +545,8 @@ getprocs(void){
       contador = contador+1;
       return contador;
     }
+    else{
+      return contador;
+    }
   }
 }
