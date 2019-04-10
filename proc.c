@@ -540,7 +540,7 @@ int getprocs(void){
   acquire(&ptable.lock);
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->state == EMBRYO || p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING){
-      contador = 1+contador;
+      contador = contador+1;
     }
   }
   release(&ptable.lock);
