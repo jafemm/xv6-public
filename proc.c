@@ -544,13 +544,11 @@ int getprocs(void){
       printf("entre al if");
       contador = contador+1;
       return contador;
-    
     }
     else{
       printf("entre al else");
       continue;
-      return contador;
-      
+      return contador;    
     }
   }
 }
