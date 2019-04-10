@@ -91,8 +91,7 @@ sys_uptime(void)
 }
 
 int
-sys_getpid(void)
+sys_getprocs(void)
 {
   return getprocs;
 }
-
