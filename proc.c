@@ -547,5 +547,5 @@ int getprocs(void){
     }
   }
   release(&ptable.lock);
-  return contador
+  return contador;
 }
