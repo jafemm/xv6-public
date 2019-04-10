@@ -543,7 +543,7 @@ getprocs(void){
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->state == EMBRYO || p->state == SLEEPING || p->state == RUNNABLE || p->state == RUNNING){
       contador = contador+1;
+      return contador;
     }
   }
-  return contador;
 }
