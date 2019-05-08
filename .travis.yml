@@ -3,12 +3,12 @@ script: make && make fs.img
 deploy:
   provider: releases
   api_key:
-    secure: rWzKJgdPnkk2sv0iByQctJcAoEhHGZt5rVBBJwk8gS229f5QX08LTxuWEUf/PT3nB+Vk4amct4qR2ppIrT3K0nECq7hcIPNxvok2IT51PLhwbF+3m8ICMObSOU/8yoRlCzEOilb5N5plAkua5PpV4waIa17YmlTxWnSGpE1KG0ZDRtKbVCpYBRxFQ0J16YMxBxHhzuVOaUTN6k0+c5P/6DIt3UkHgoDkn5+npTOK40CYbC58k9T0UJKwTWwxKsU9JjdCOZSdJJLQW3ThOu0RXYTmkUMmOV9dXA/7PfBMFZHLhBtO9JWNJMzkqFDAzcXA0vchETm8Akl+KJb/qZcBMWnSBhk8C6lqETIBhdqUhG6xoyGHPOcPguUc9r1jU15lVrqe+M6D3EuSFDZfEwjl1iJ3OznLZgQKNXNAOBsBkbftydze6i42Md5uqfH6nGu56uyS4A2ZDaY22oFiHbFD1C4A1HeMfKRIhcykaiGpq47IKLj5hNsb3G++5/oIHpeu5WLHd+GhofYkY13gkyL1ECrxFPmPc9u8PR5FuAqbqGjcmZyWxrDJKcmgwFfgc2bOAdy66vaWZmVmHvqt6azUlm0F0eBxtN9itV91v8PJ+AfYPCaEwbmLulEFMQppmlTRDnSN4x+vRYt1zfen9/pzdaR3MvuxKn14IZt3fpLbFW0=
+    secure: IYscjWfFXKsXnMBTUo3KaKjuj5/3Zf7X7nXb+bPRG2rI1gs/N/sEaCg7gdfJPBBXA4dGitFzXjA44dhJPyWMLl2BzeY2p9yBMKVRj67cqjXhGoNvCWZiYP12J450lrhBbuP4yoopUbOLlLINRKfjt/uUL0VmkqK/tChxQ8DjscX1a+6mSLbCs86bnVxdU5R5ybhz2NM/VtbMZGdM84OBts9tyFu606zTXsitbvifawOuiOHrIT7jZ22C7IZk8tGY8VU9OU+5nkdC9EFyz23XDbQfE5RHCH/6kOLRXc5HpiTVhSONHIXGeO+zDTbRexesTcaA4qX2Wy3iOeG3/K/pSpzdbKRZKSznEBe09JV1sKrjoR6Vfo+837f2JJRTF9xUN4Ebjyi2ym9qvJrNeWQDnhcN+Jwz8MphqT1Ba3+/GLDgV4ajH6Joa5DHGZ6/N5/Pwd83+LAahOj9vdQAlITcJ00Cqbl2RhJ9KEuHjnIZBKIWR8l0P3IYsXCb1ySuFv7Z31bcd6TI0aCSqX2ydSNUtLt82fLeoDaGorJeBBjrbdqoYKs1EGCm7f3uEP0oz5uUf2z0udTAZ1Erub2b8znBiG9ofUV30fhBYJQW2E33GH+KW8BR/rN7VUqGiALDZDdQBuWx/1TF3fZOnVEUg30IfZ+U+KO7E1JRWCtaj0f722E=
   file:
       - fs.img
       - xv6.img
-      skip_cleanup: true
+  skip_cleanup: true
   on:
     repo: jafemm/xv6-public
-    branch: heads/master
+    branch: project_1
     tags: true
