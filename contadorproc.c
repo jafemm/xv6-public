@@ -10,6 +10,8 @@
 
 
 int main(void){
+    printf("hola");
     printf(1,"El numero de procesos es: %d", getprocs());
+    printf("hola2");
     exit();
 }
