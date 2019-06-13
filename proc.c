@@ -355,7 +355,7 @@ scheduler(void)
         number_tickets= number_tickets + p->tickets;
       }
     }
-    winner = rand_at_most(number_tickets);
+    winner = random_at_most(number_tickets);
 
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
