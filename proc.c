@@ -341,7 +341,7 @@ scheduler(void)
   c->proc = 0;
   int number_tickets = 0;               //Numero total de tickets
   int counter = 0;
-  int winner = 0;
+  int winnert = 0;
 
   for(;;){
     // Enable interrupts on this processor.
@@ -355,7 +355,7 @@ scheduler(void)
         number_tickets= number_tickets + p->tickets;
       }
     }
-    winner = random_at_most(number_tickets);
+    winnert = random_at_most(number_tickets);
 
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
