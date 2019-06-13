@@ -363,7 +363,7 @@ scheduler(void)
     current = p;
     while (current!=NULL) {
       counter = counter + current->tickets;
-      if(counter>winner){
+      if(counter>winnert){
         break;
       }
       current++;
