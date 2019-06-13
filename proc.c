@@ -7,7 +7,7 @@
 #include "proc.h"
 #include "spinlock.h"
 #define NULL 0
-#define "rand.h" 
+#include "rand.h" 
 
 struct {
   struct spinlock lock;
