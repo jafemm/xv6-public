@@ -26,6 +26,14 @@ void
 pinit(void)
 {
   initlock(&ptable.lock, "ptable");
+  // Seed RNG with current time
+  sgenrand(unixtime());
+}
+
+void
+pinit(void)
+{
+  initlock(&ptable.lock, "ptable");
 }
 
 // Must be called with interrupts disabled
@@ -331,7 +339,7 @@ scheduler(void)
   struct proc *current;
   struct cpu *c = mycpu();
   c->proc = 0;
-  int number_tickets = 0;               //Numero total de number_tickets
+  int number_tickets = 0;               //Numero total de tickets
   int counter = 0;
   int winner = 0;
 
@@ -347,7 +355,7 @@ scheduler(void)
         number_tickets= number_tickets + p->tickets;
       }
     }
-    winner = random_at_most(number_tickets);
+    winner = rand_at_most(number_tickets);
 
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
