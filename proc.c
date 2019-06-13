@@ -6,6 +6,9 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
+#define NULL 0
+#include <stdlib.h>
+#include <time.h>
 
 struct {
   struct spinlock lock;
@@ -573,8 +576,7 @@ scheduler(void)
         counter = counter + current->tickets;
         if(counter>winner)
           break;
-        current = current->next; 
-
+        current = current->next;
       }
 
       // Switch to chosen process.  It is the process's job
