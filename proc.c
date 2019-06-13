@@ -331,9 +331,8 @@ scheduler(void)
   struct proc *current;
   struct cpu *c = mycpu();
   c->proc = 0;
-  int number_tickets = 100;               //Numero total de number_tickets
+  int number_tickets = 0;               //Numero total de number_tickets
   int counter = 0;
-  int total = 0;
   int winner = 0;
 
   for(;;){
@@ -345,10 +344,10 @@ scheduler(void)
 
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state==RUNNABLE){
-        total= total + p->tickets;
+        number_tickets= number_tickets + p->tickets;
       }
     }
-    winner = random_at_most(total);
+    winner = random_at_most(number_tickets);
 
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
@@ -359,7 +358,7 @@ scheduler(void)
       if(counter>winner){
         break;
       }
-      current = current->next;
+      current++;
     }
 
       // Switch to chosen process.  It is the process's job
