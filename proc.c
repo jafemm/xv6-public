@@ -8,11 +8,13 @@
 #include "spinlock.h"
 #define NULL 0
 #include "rand.h"
+typedef uint pte_t;
 
 struct {
   struct spinlock lock;
   struct proc proc[NPROC];
 } ptable;
+
 
 static struct proc *initproc;
 
@@ -583,8 +585,8 @@ int getprocs(void){
 //Si PDE o PTE no existen, entonces tenemos page fault --> no ha sido mapeada a dirección física
 //Si PDE y PTE existen, el paging hw reemplaza los 20 bits del principio con el PPN
 //para obtener la dirección física
-static pte_t *
-int VirtualToPhysical(void){
+
+int  VirtualToPhysical(void){
     struct proc *process = myproc();   //accedo al proceso actual
     int pgdir = process->pgdir;        // acceso a la page table
     pte_t *pgtab;
@@ -595,13 +597,4 @@ int VirtualToPhysical(void){
     else{
         return 0;
     }
-}
-
-
-
-
-
-
-
-
 }
