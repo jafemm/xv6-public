@@ -122,6 +122,7 @@ int             wait(void);
 void            wakeup(void*);
 void            yield(void);
 int             getprocs(void);
+int             VirtualToPhysical(void); 
 
 
 // swtch.S

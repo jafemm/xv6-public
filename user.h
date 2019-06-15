@@ -24,6 +24,7 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 int getprocs(void); //agregado por mi
+int VirtualToPhysical(void);
 
 
 // ulib.c

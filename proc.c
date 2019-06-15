@@ -573,3 +573,34 @@ int getprocs(void){
   release(&ptable.lock);
   return contador;
 }
+
+
+//Para traducir de virtual a fisica:
+//En la dirección virtual los 10 primeros bits son un index al page directory
+//Si existe un page directory entrt (PDE), usa los sgtes 10 bits
+//para buscar una page table entry (PTE). La PTE son 20 bits de
+//physical page number (PPN). El PPN se refiere a la ubicación física
+//Si PDE o PTE no existen, entonces tenemos page fault --> no ha sido mapeada a dirección física
+//Si PDE y PTE existen, el paging hw reemplaza los 20 bits del principio con el PPN
+//para obtener la dirección física
+static pte_t *
+int VirtualToPhysical(void){
+    struct proc *process = myproc();   //accedo al proceso actual
+    int pgdir = process->pgdir;        // acceso a la page table
+    pte_t *pgtab;
+    if(pgdir & PTE_P){
+        pte_t *pgtab = (pte_t*)P2V(PTE_ADDR(pdgir))  //P2V() suma 0x80000000 y PTE tiene la dirección física
+        return pgtab;
+    }
+    else{
+        return 0;
+    }
+
+
+
+
+
+
+
+
+}

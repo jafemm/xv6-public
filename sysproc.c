@@ -95,3 +95,8 @@ sys_getprocs(void)
 {
   return getprocs();
 }
+int
+sys_VirtualToPhysical(void)
+{
+  return VirtualToPhysical();
+}
