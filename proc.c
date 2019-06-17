@@ -555,12 +555,12 @@ int getprocs(void){
 //Si PDE o PTE no existen, entonces tenemos page fault --> no ha sido mapeada a dirección física
 //Si PDE y PTE existen, el paging hw reemplaza los 20 bits del principio con el PPN
 //para obtener la dirección física
-static pte_t VirtualToPhysical(void){
+int VirtualToPhysical(void){
     struct proc *process = myproc();   //accedo al proceso actual
-    int *pgdir = process->pgdir;        // acceso a la page table
-    pte_t *pgtab;
+    int pgdir = process->pgdir;        // acceso a la page table
+    int *pgtab;
     if(pgdir & PTE_P){
-        pte_t *pgtab = (pte_t*)P2V(PTE_ADDR(pgdir))  //P2V() suma 0x80000000 y PTE tiene la dirección física
+        pgtab = (int)P2V(PTE_ADDR(pgdir))  //P2V() suma 0x80000000 y PTE tiene la dirección física
         return pgtab;
     }
     else{
