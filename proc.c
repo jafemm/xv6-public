@@ -6,15 +6,11 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
-#define NULL 0
-#include "rand.h"
-typedef uint pte_t;
 
 struct {
   struct spinlock lock;
   struct proc proc[NPROC];
 } ptable;
-
 
 static struct proc *initproc;
 
@@ -28,8 +24,6 @@ void
 pinit(void)
 {
   initlock(&ptable.lock, "ptable");
-  // Seed RNG with current time
-  sgenrand(unixtime());
 }
 
 // Must be called with interrupts disabled
@@ -325,19 +319,12 @@ wait(void)
 //  - swtch to start running that process
 //  - eventually that process transfers control
 //      via swtch back to the scheduler.
-
-
-
 void
 scheduler(void)
 {
   struct proc *p;
-  struct proc *current;
   struct cpu *c = mycpu();
   c->proc = 0;
-  int number_tickets = 0;               //Numero total de tickets
-  int counter = 0;
-  int winnert = 0;
 
   for(;;){
     // Enable interrupts on this processor.
@@ -345,25 +332,9 @@ scheduler(void)
 
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
-
-    for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-      if(p->state==RUNNABLE){
-        number_tickets= number_tickets + p->tickets;
-      }
-    }
-    winnert = random_at_most(number_tickets);
-
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
-    current = p;
-    while (current!=NULL) {
-      counter = counter + current->tickets;
-      if(counter>winnert){
-        break;
-      }
-      current++;
-    }
 
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
@@ -576,7 +547,6 @@ int getprocs(void){
   return contador;
 }
 
-
 //Para traducir de virtual a fisica:
 //En la dirección virtual los 10 primeros bits son un index al page directory
 //Si existe un page directory entrt (PDE), usa los sgtes 10 bits
@@ -585,8 +555,7 @@ int getprocs(void){
 //Si PDE o PTE no existen, entonces tenemos page fault --> no ha sido mapeada a dirección física
 //Si PDE y PTE existen, el paging hw reemplaza los 20 bits del principio con el PPN
 //para obtener la dirección física
-
-int  VirtualToPhysical(void){
+static pte_t VirtualToPhysical(void){
     struct proc *process = myproc();   //accedo al proceso actual
     int pgdir = process->pgdir;        // acceso a la page table
     pte_t *pgtab;
