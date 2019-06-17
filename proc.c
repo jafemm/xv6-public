@@ -558,7 +558,7 @@ int getprocs(void){
 int VirtualToPhysical(void){
     struct proc *process = myproc();   //accedo al proceso actual
     int pgtab;
-    if((PTE_P){
+    if(PTE_P){
         pgtab = (int)P2V(PTE_ADDR(process->pgdir))  //P2V() suma 0x80000000 y PTE tiene la dirección física
 
         return pgtab;
