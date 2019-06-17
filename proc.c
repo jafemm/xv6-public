@@ -557,10 +557,10 @@ int getprocs(void){
 //para obtener la dirección física
 static pte_t VirtualToPhysical(void){
     struct proc *process = myproc();   //accedo al proceso actual
-    int pgdir = process->pgdir;        // acceso a la page table
+    int *pgdir = process->pgdir;        // acceso a la page table
     pte_t *pgtab;
     if(pgdir & PTE_P){
-        pte_t *pgtab = (pte_t*)P2V(PTE_ADDR(pdgir))  //P2V() suma 0x80000000 y PTE tiene la dirección física
+        pte_t *pgtab = (pte_t*)P2V(PTE_ADDR(pgdir))  //P2V() suma 0x80000000 y PTE tiene la dirección física
         return pgtab;
     }
     else{
