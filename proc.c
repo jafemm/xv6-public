@@ -556,9 +556,9 @@ int getprocs(void){
 //Si PDE y PTE existen, el paging hw reemplaza los 20 bits del principio con el PPN
 //para obtener la dirección física
 int VirtualToPhysical(void){
-    struct proc *process = myproc();   //accedo al proceso actual     
-    int *pgtab;
-    if(process->pgdir & PTE_P){
+    struct proc *process = myproc();   //accedo al proceso actual
+    int pgtab;
+    if(&(process->pgdir) & PTE_P){
         pgtab = (int)P2V(PTE_ADDR(process->pgdir))  //P2V() suma 0x80000000 y PTE tiene la dirección física
         return pgtab;
     }
