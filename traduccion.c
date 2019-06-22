@@ -6,7 +6,7 @@
 int main(void){
     int dirfis = VirtualToPhysical();
     if(dirfis == 0){
-        printf("La direccion no es válida");
+        printf(1,"La direccion no es válida");
         exit();
     }
     else{
