@@ -4,7 +4,7 @@
 
 
 int main(void){
-    int dirfis = VirtualToPhysical()
+    int dirfis = VirtualToPhysical();
     if(dirfis == 0){
         print("La direccion no es válida");
         exit();
